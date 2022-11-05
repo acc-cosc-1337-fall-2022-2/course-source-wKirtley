@@ -1,6 +1,10 @@
 #include <string>
 #ifndef TICTACTOE
 #define TICTACTOE
+#include <vector>
+using namespace std;
+using std::vector;
+using std::string;
 
 class TicTacToe
 {
@@ -8,16 +12,17 @@ class TicTacToe
         bool game_over();
         void start_game(std::string first_player);
         void mark_board(int position);
-        std::string get_player() const;
+        string get_player() const;
         void display_board() const;
+        void get_clear_board();
+        void get_set_player();
     
     private:
-        std::string player = "X";
+        string player;
         void set_next_player();
         bool check_board_full();
         void clear_board();
-        std::string pegs[9] = {" ", " ", " ", " ", " ", " ", " ", " ", " "};
-        int position;
+        vector<string> pegs = {" ", " ", " ", " ", " ", " ", " ", " ", " "};
         
 };
 
