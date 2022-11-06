@@ -14,8 +14,6 @@ class TicTacToe
         void mark_board(int position);
         string get_player() const;
         void display_board() const;
-        void get_clear_board();
-        void get_set_player();
         string get_winner();
     
     private:

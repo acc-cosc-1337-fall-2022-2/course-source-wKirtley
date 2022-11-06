@@ -9,19 +9,42 @@ using namespace std;
 
 void TicTacToe :: start_game(string first_player)
 {
-    if (first_player == "X" || first_player == "O")
+    string choice = "y";
+    while (choice == "y")
     {
+        int position;
         clear_board();
-        display_board();
         player = first_player;
+        if (first_player == "X" || first_player == "O"){
+            display_board();
+            while (game_over() == false)
+            {
+                cout<<"Player "<<player<<" choose a position on the board(1-9): ";
+                cin>>position;
+                mark_board(position-1);
+                display_board();
+                set_next_player();
+            }
+            player = get_winner();
+            if (player  == "C"){
+                cout<<"The game has ended in a tie."<<endl;
+            }
+            else{
+                cout<<"The winner is player "<<player<<endl;
+            }
+            clear_board();
+            cout<<"Do you wish to continue?(y/n): ";
+            cin>>choice;
+            cout<<"Enter first player: "; cin>>player;
+        }
+        else
+        {
+            cout<<"Player must be either X or O: ";
+            cin>>first_player;
+            player = first_player;
+        }
     }
-    else
-    {
-        cout<<"Player must be either X or O: ";
-        cin>>first_player;
-        player = first_player;
-    }
-    
+    cout<<"Game over."<<endl;
 }
 
 void TicTacToe :: display_board() const
@@ -198,13 +221,4 @@ string TicTacToe :: get_winner()
 string TicTacToe :: get_player() const
 {
     return player;
-}
-void TicTacToe :: get_clear_board()
-{
-    clear_board();
-}
-
-void TicTacToe :: get_set_player()
-{
-    set_next_player();
 }
