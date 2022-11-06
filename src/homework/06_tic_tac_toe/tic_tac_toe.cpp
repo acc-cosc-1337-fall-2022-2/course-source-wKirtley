@@ -116,7 +116,8 @@ bool TicTacToe :: game_over()
         set_winner();
         return true;
     }
-    if (check_board_full()){
+    if ((check_board_full()==true)&&(check_column_win()==false&&check_row_win()==false&&check_diagonal_win()==false)){
+        winner = "C";
         return true;
     }
     return false;
@@ -184,8 +185,14 @@ void TicTacToe :: set_winner()
 
 string TicTacToe :: get_winner()
 {
-    set_winner();
-    return winner;
+    if (winner == "C"){
+        return winner;
+    }
+    else{
+        set_winner();
+        return winner;
+    }
+    
 }
 
 string TicTacToe :: get_player() const

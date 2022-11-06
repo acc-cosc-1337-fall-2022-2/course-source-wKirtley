@@ -30,12 +30,18 @@ int main()
 			}
 		}
 		player = game.get_winner();
-		cout<<"The winner is player "<<player<<endl;
+		if (player  == "C"){
+			cout<<"The game has ended in a tie."<<endl;
+		}
+		else{
+			cout<<"The winner is player "<<player<<endl;
+		}
 		game.get_clear_board();
 		cout<<"Do you wish to continue?(y/n): ";
 		cin>>choice;
 		game.get_set_player();
+		
 	}
-	cout<<"Game Over";
+	cout<<"Game Over."<<endl;
 	return 0;
 }
