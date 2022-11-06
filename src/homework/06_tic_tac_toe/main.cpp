@@ -10,10 +10,10 @@ int main()
 	int position;
 	string choice = "y";
 	TicTacToe game;
-	cout<<"Enter first player: ";
-	cin>>player;
-	game.start_game(player);
 	while (choice == "y"){
+		cout<<"Enter first player: ";
+		cin>>player;
+		game.start_game(player);
 		while (game.game_over() == false)
 		{
 			cout<<"Player "<<player<<" choose a position on the board(1-9): ";
@@ -29,9 +29,12 @@ int main()
 				player = "X";
 			}
 		}
+		player = game.get_winner();
+		cout<<"The winner is player "<<player<<endl;
 		game.get_clear_board();
 		cout<<"Do you wish to continue?(y/n): ";
 		cin>>choice;
+		game.get_set_player();
 	}
 	cout<<"Game Over";
 	return 0;
