@@ -1,4 +1,7 @@
 #include "tic_tac_toe_4.h"
+#include <string>
+
+using std::string;
 
 /*
 class function check_column_win
@@ -11,7 +14,34 @@ else
 false
 */
 
+bool tic_tac_toe4::check_column_win() 
+{
+    bool val = false; 
+    string previous_player;
 
+    if (player == "X")
+    {
+        previous_player = "O";
+    } 
+    else if (player == "O") 
+    {
+        previous_player = "X";
+    }
+
+    for (int coulmn = 0; coulmn < 4 && win == 0; coulmn++) 
+    {
+        val = true;
+        for (int row = 0; row < 4; row++) 
+        {
+
+            if (pegs.at(coulmn + (row * 4 )) != previous_player)
+            {
+                val = false;
+            }
+        }
+    }
+    return val;
+}
 
 
 /*
@@ -23,7 +53,33 @@ Win by row if
 12,13,14, 15 are equal
 */
 
+bool tic_tac_toe4::check_row_win() 
+{
+    bool val = false;
+    string previous_player;
 
+    if (player == "X")
+    {
+        previous_player = "O";
+    } 
+    else if (player == "O") 
+    {
+        previous_player = "X";
+    }
+
+    for (int row = 0; row < 4 && win == 0; row++) 
+    {
+        val = true;
+        for (int coulmn = 0; coulmn < 4; coulmn++) 
+        {
+            if (pegs.at(coulmn + (row * 4 )) != previous_player )
+            {
+                val = false;
+            }
+        }
+    }
+    return val;
+}
 
 /*
 class function check_diagonal_win
@@ -32,5 +88,34 @@ Win diagonally
 4, 5,  6,  7
 8, 9, 10, 11
 12,13,14, 15
-
 */
+
+bool tic_tac_toe4::check_diagonal_win() 
+{
+    bool val = false;
+    string previous_player;
+
+    if (player == "X")
+    {
+        previous_player = "O";
+    } else if 
+    (player == "O") 
+    {
+        previous_player = "X";
+    }
+   
+    if (pegs.at(0) == previous_player && pegs.at(5) == previous_player && pegs.at(10) == previous_player && pegs.at(15) == previous_player) 
+    {
+        val = true;
+    } 
+    else if (pegs.at(3) == previous_player && pegs.at(6) == previous_player && pegs.at(9) == previous_player && pegs.at(12) == previous_player) 
+    {
+        val = true;
+    } 
+    else 
+    {
+        val = false;
+    }
+
+    return val;
+}
