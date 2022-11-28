@@ -1,4 +1,6 @@
 #include "tic_tac_toe_manager.h"
+#include "tic_tac_toe_data.h"
+#include "tic_tac_toe.h"
 using std::string;
 using std::unique_ptr;
 using std::move;

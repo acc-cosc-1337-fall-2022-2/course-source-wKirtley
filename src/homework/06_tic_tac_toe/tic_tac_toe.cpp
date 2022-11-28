@@ -68,63 +68,20 @@ bool TicTacToe :: game_over()
     return false;
 }
 
-/*
 bool TicTacToe :: check_row_win()
 {
-    bool val = false;
-    if ((pegs[0]=="X"&&pegs[1]=="X"&&pegs[2]=="X")||
-    (pegs[0]=="O"&&pegs[1]=="O"&&pegs[2]=="O")){
-        val = true;
-    }
-    else if ((pegs[3]=="X"&&pegs[4]=="X"&&pegs[5]=="X")||
-    (pegs[3]=="O"&&pegs[4]=="O"&&pegs[5]=="O")){
-        val = true;
-    }
-    else if ((pegs[6]=="X"&&pegs[7]=="X"&&pegs[8]=="X")||
-    (pegs[6]=="O"&&pegs[7]=="O"&&pegs[8]=="O")){
-        val = true;
-    }
-    return val;
+    return false;
 }
-*/
 
-/*
 bool TicTacToe :: check_column_win()
 {
-    
-    bool val = false;
-    if ((pegs[0]=="X"&&pegs[3]=="X"&&pegs[6]=="X")||
-    (pegs[0]=="O"&&pegs[3]=="O"&&pegs[6]=="O")){
-        val = true;
-    }
-    else if ((pegs[1]=="X"&&pegs[4]=="X"&&pegs[7]=="X")||
-    (pegs[1]=="O"&&pegs[4]=="O"&&pegs[7]=="O")){
-        val = true;
-    }
-    else if ((pegs[2]=="O"&&pegs[5]=="O"&&pegs[8]=="O")||
-    (pegs[2]=="X"&&pegs[5]=="X"&&pegs[8]=="X")){
-        val = true;
-    }
-    return val;
-    
+    return false;
 }
-*/
 
-/*
 bool TicTacToe :: check_diagonal_win()
 {
-    bool val = false;
-    if ((pegs[0]=="X"&&pegs[4]=="X"&&pegs[8]=="X")||
-    (pegs[0]=="O"&&pegs[4]=="O"&&pegs[8]=="O")){
-        return true;
-    }
-    else if ((pegs[2]=="X"&&pegs[4]=="X"&&pegs[6]=="X")||
-    (pegs[2]=="O"&&pegs[4]=="O"&&pegs[6]=="O")){
-        return true;
-    }
-    return val;
+    return false;
 }
-*/
 
 void TicTacToe :: set_winner()
 {
