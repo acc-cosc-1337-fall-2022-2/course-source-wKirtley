@@ -3,6 +3,7 @@
 #include "tic_tac_toe_manager.h"
 #include <iostream>
 #include <string>
+#include <memory>
 using std::string;
 using std::unique_ptr;
 using std::make_unique;
