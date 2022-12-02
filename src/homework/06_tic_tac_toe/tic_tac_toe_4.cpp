@@ -13,34 +13,22 @@ Win by column if and return true if (each column index)
 else
 false
 */
-
-bool tic_tac_toe4::check_column_win() 
+bool TicTacToe4::check_column_win()
 {
-    bool val = false; 
-    string previous_player;
-
-    if (player == "X")
-    {
-        previous_player = "O";
-    } 
-    else if (player == "O") 
-    {
-        previous_player = "X";
-    }
-
-    for (int coulmn = 0; coulmn < 4 && win == 0; coulmn++) 
-    {
-        val = true;
-        for (int row = 0; row < 4; row++) 
-        {
-
-            if (pegs.at(coulmn + (row * 4 )) != previous_player)
-            {
-                val = false;
-            }
-        }
-    }
-    return val;
+  bool return_value=false;
+  if((pegs[0]=="X"&&pegs[4]=="X"&&pegs[8]=="X"&&pegs[12]=="X")||
+  (pegs[0]=="O"&&pegs[4]=="O"&&pegs[8]=="O"&&pegs[12]=="O"))
+    return_value= true;
+  else if((pegs[1]=="X"&&pegs[5]=="X"&&pegs[9]=="X"&&pegs[13]=="X")||
+  (pegs[1]=="O"&&pegs[5]=="O"&&pegs[9]=="O"&&pegs[13]=="O"))
+    return_value= true;
+  else if((pegs[2]=="X"&&pegs[6]=="X"&&pegs[10]=="X"&&pegs[14]=="X")||
+  (pegs[2]=="O"&&pegs[6]=="O"&&pegs[10]=="O"&&pegs[14]=="O"))
+    return_value= true;
+  else if((pegs[3]=="X"&&pegs[7]=="X"&&pegs[11]=="X"&&pegs[15]=="X")||
+  (pegs[3]=="O"&&pegs[7]=="O"&&pegs[11]=="O"&&pegs[15]=="O"))
+    return_value= true;
+  return return_value;
 }
 
 
@@ -52,34 +40,24 @@ Win by row if
 8, 9, 10, 11 are equal 
 12,13,14, 15 are equal
 */
-
-bool tic_tac_toe4::check_row_win() 
+bool TicTacToe4::check_row_win()
 {
-    bool val = false;
-    string previous_player;
-
-    if (player == "X")
-    {
-        previous_player = "O";
-    } 
-    else if (player == "O") 
-    {
-        previous_player = "X";
-    }
-
-    for (int row = 0; row < 4 && win == 0; row++) 
-    {
-        val = true;
-        for (int coulmn = 0; coulmn < 4; coulmn++) 
-        {
-            if (pegs.at(coulmn + (row * 4 )) != previous_player )
-            {
-                val = false;
-            }
-        }
-    }
-    return val;
+  bool return_value=false;
+  if((pegs[0]=="X"&&pegs[1]=="X"&&pegs[2]=="X"&&pegs[3]=="X")||
+  (pegs[0]=="O"&&pegs[1]=="O"&&pegs[2]=="O"&&pegs[3]=="O"))
+    return_value= true;
+  else if((pegs[4]=="X"&&pegs[5]=="X"&&pegs[6]=="X"&&pegs[7]=="X")||
+  (pegs[4]=="O"&&pegs[5]=="O"&&pegs[6]=="O"&&pegs[7]=="O"))
+    return_value= true;
+  else  if((pegs[8]=="X"&&pegs[9]=="X"&&pegs[10]=="X"&&pegs[11]=="X")||
+  (pegs[8]=="O"&&pegs[9]=="O"&&pegs[10]=="O"&&pegs[11]=="O"))
+    return_value= true;
+  else  if((pegs[12]=="X"&&pegs[13]=="X"&&pegs[14]=="X"&&pegs[15]=="X")||
+  (pegs[12]=="O"&&pegs[13]=="O"&&pegs[14]=="O"&&pegs[15]=="O"))
+    return_value=true;
+  return return_value;
 }
+
 
 /*
 class function check_diagonal_win
@@ -88,34 +66,19 @@ Win diagonally
 4, 5,  6,  7
 8, 9, 10, 11
 12,13,14, 15
+
 */
 
-bool tic_tac_toe4::check_diagonal_win() 
+
+
+bool TicTacToe4::check_diagonal_win()
 {
-    bool val = false;
-    string previous_player;
-
-    if (player == "X")
-    {
-        previous_player = "O";
-    } else if 
-    (player == "O") 
-    {
-        previous_player = "X";
-    }
-   
-    if (pegs.at(0) == previous_player && pegs.at(5) == previous_player && pegs.at(10) == previous_player && pegs.at(15) == previous_player) 
-    {
-        val = true;
-    } 
-    else if (pegs.at(3) == previous_player && pegs.at(6) == previous_player && pegs.at(9) == previous_player && pegs.at(12) == previous_player) 
-    {
-        val = true;
-    } 
-    else 
-    {
-        val = false;
-    }
-
-    return val;
+  bool return_value=false;
+  if((pegs[0]=="X"&&pegs[5]=="X"&&pegs[10]=="X"&&pegs[15]=="X")||
+  (pegs[0]=="O"&&pegs[5]=="O"&&pegs[10]=="O"&&pegs[15]=="O"))  
+     return_value= true;
+  else  if((pegs[12]=="X"&&pegs[9]=="X"&&pegs[6]=="X"&&pegs[3]=="X")||
+  (pegs[12]=="O"&&pegs[9]=="O"&&pegs[6]=="O"&&pegs[3]=="O"))
+    return_value= true;
+  return return_value;
 }

@@ -1,72 +1,67 @@
+#include "tic_tac_toe.h"
+#include "tic_tac_toe_manager.h"
 #include "tic_tac_toe_3.h"
 #include "tic_tac_toe_4.h"
-#include "tic_tac_toe_manager.h"
 #include <iostream>
 #include <string>
 #include <memory>
 using std::string;
-using std::unique_ptr;
-using std::make_unique;
-using namespace std;
+using  std::cin; using std::cout; using std::endl;
 
-int main() 
+
+int main()
 {
-	unique_ptr<TicTacToe> game;
+	int x_wins, o_wins, tie;
+	string play_again;
 	string player;
-	bool loop_again;
-	TicTacToe_manager manager;
-	int size;
-	int x_wins;
-	int o_wins;
-	int ties;
+	std::unique_ptr<TicTacToe> game;
+	TicTacToeManager manager;
+	int game_size;
+	LOOP: cout<<"Choose a game size of 3 or 4: ";
+	cin>>game_size;
+	if(game_size == 3){
+		game=std::make_unique<TicTacToe3>();
+	}
+	else if (game_size == 4){
+		game=std::make_unique<TicTacToe4>();
+	}
+	else{
+		goto LOOP;
+	}
+	cout<<"Enter first player(X/O): ";
+	cin>>player;
+	if (player != "X" && player != "O")
+	{
+		cout<<"Player must either be X or O."<<endl;
+		goto LOOP;
+	}
 
-	do {
-		do {
-			cout << "Do you want to play with a board of size 3 or 4: ";
-			cin >> size;
-			
-			if (size == 3) {
-				game = make_unique <tic_tac_toe3>();
-			} else if (size == 4) {
-				game = make_unique <tic_tac_toe4>();
-			} else {
-				cout << "Invalid size" << "\n";
-			}
-
-		} while(size != 3 && size != 4);
-
-
-		cout << "Enter X or O: ";
-		cin >> player;
-
-		while (player != "X" && player != "O") {
-			cout << "Invalid input try again" << "\n";
-			cout << "Enter X or O: ";
-			cin >> player;
+	game->start_game(player);
+	do{
+		cout<<*game;
+		cin>>*game;
+		if (game->game_over()==true){
+			string outcome = game->get_winner();
+			cout<<outcome<<" wins."<<endl;
 		}
-
-		game->start_game(player);
-
-		do {
-			cout << *game;
-			cin >> *game;
-
-		} while(game->game_over() == false);
-		cout << *game;
-
-		cout << "The winner is " << game->get_winner() << "\n";
-		manager.save_game(game);
-		manager.get_winner_total(o_wins, x_wins, ties);
-		cout << "X has won " << x_wins << ". O has won " << o_wins << ". There has been " << ties << " ties." << "\n";
-
-		cout << "Do you want to play again (1-yes 2-no): ";
-		cin >> loop_again;
-
-	} while (loop_again);
-
-	cout << "\n" << "All games played:" << "\n";
-	cout << manager;
-
-
+	}
+	while(game->game_over() == false); //saves winner correctly yet but board keeps going?? not sure.
+	manager.save_game(game);
+	cout<<"game over."<<endl;
+	manager.get_winner_totals(o_wins, x_wins, tie);
+	std::cout<<"X wins: "<<x_wins<<"  O wins: "<<o_wins<<"  Tied games: "<<tie<<endl;
+	std::cout<<"Play again?(y/n): ";
+	std::cin>>play_again;
+	if(play_again=="y"){
+		goto LOOP;
+	}
+	std::cout<<manager;
+	
+	int x_win;
+	int o_win;
+	int ties;
+	manager.get_winner_totals( o_win,x_win,ties);
+	std::cout<<"X wins: "<<x_win<<"  O wins: "<<o_win<<"  Tied games: "<<ties<<endl;
 	return 0;
+
 }
